@@ -10,18 +10,22 @@ function App() {
   let city = 'Helsinki';
 
   const fetchData = async () => {
-    setIsLoading(true);
-
-    const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=${key}&contentType=json`,
-      {
-        method: "GET",
-        headers: {},
-      }
-    )
-      .then((response) => response.json())
-    setWeatherData(response);
-    setIsLoading(false);
+try {
+	    setIsLoading(true);
+	
+	    const response = await fetch(
+	      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=${key}&contentType=json`,
+	      {
+	        method: "GET",
+	        headers: {},
+	      }
+	    )
+	      .then((response) => response.json())
+	    setWeatherData(response);
+	    setIsLoading(false);
+} catch (error) {
+	console.log('Error occured while fetching data : ',error);
+}
   };
 
   useEffect(() => {
