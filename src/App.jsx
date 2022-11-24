@@ -7,7 +7,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const key = "8WZRHWN5ZRVL5C9375RBFJZFJ";
-  let city ='Helsinki';
+  let city = 'Helsinki';
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -24,40 +24,12 @@ function App() {
     setIsLoading(false);
   };
 
-
   useEffect(() => {
-   
+
     fetchData();
-   
+
   }, []);
 
-  // console.log(weatherData);
-
-  // const processWeatherData = () => {
-  //   console.log(weatherData);
-
-  //   let day = weatherData?.days;
-  //   let location = weatherData.resolvedAddress;
-
-  //   return (
-  //     <div>
-  //       <h1>{location}</h1>
-  //       <span>UV Index : {weatherData?.currentConditions?.uvindex}</span>
-  //       <Weather
-  //         key={day.datetimeEpoch}
-  //         date={day.datetime}
-  //         uvindex={day.uvindex}
-  //         tempmax={day.tempmax}
-  //         description={day.description}
-  //         tempmin={day.tempmin}
-  //         currentTemp={day.temp}
-  //       />
-
- 
-  //     </div>
-  //   );
-  // };
-  console.log(weatherData);
 
   return (
     <div className="App">
@@ -65,24 +37,24 @@ function App() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <h2>{weatherData && weatherData.resolvedAddress}    
-          
+          <h2>{weatherData && weatherData.resolvedAddress}
+
           </h2>
           <p>current Temp:{weatherData?.currentConditions.temp}&#x2109; ::: Feels Like :  {weatherData?.currentConditions.feelslike}&#x2109;</p>
           <p>uvindex : {weatherData?.currentConditions?.uvindex}</p>
           {weatherData &&
-        weatherData.days.map((day) => (
-          <Weather
-            key={day.datetimeEpoch}
-            date={day.datetime}
-            uvindex={day.uvindex}
-            tempmax={day.tempmax}
-            description={day.description}
-            tempmin={day.tempmin}
-            currentTemp={day.temp}
-          />
-        ))
-        }
+            weatherData.days.map((day) => (
+              <Weather
+                key={day.datetimeEpoch}
+                date={day.datetime}
+                uvindex={day.uvindex}
+                tempmax={day.tempmax}
+                description={day.description}
+                tempmin={day.tempmin}
+                currentTemp={day.temp}
+              />
+            ))
+          }
         </div>
       )}
     </div>
