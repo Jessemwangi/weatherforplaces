@@ -2,11 +2,12 @@ import "./App.css";
 import Weather from "./Weather";
 
 import React, { useEffect, useState } from "react";
-
+console.log(process.env.REACT_APP_WEATHER_API_KEY)
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const key = "8WZRHWN5ZRVL5C9375RBFJZFJ";
+  
+  const key = process.env.REACT_APP_WEATHER_API_KEY;
   let city = 'Helsinki';
 
   const fetchData = async () => {
